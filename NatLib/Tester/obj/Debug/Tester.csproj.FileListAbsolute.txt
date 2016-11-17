@@ -1,0 +1,11 @@
+D:\Project\NatLib\Tester\bin\Debug\Tester.exe.config
+D:\Project\NatLib\Tester\bin\Debug\Tester.exe
+D:\Project\NatLib\Tester\bin\Debug\Tester.pdb
+D:\Project\NatLib\Tester\bin\Debug\NatLib.DB.dll
+D:\Project\NatLib\Tester\bin\Debug\NatLib.dll
+D:\Project\NatLib\Tester\bin\Debug\MySql.Data.dll
+D:\Project\NatLib\Tester\bin\Debug\NatLib.DB.pdb
+D:\Project\NatLib\Tester\bin\Debug\NatLib.pdb
+D:\Project\NatLib\Tester\obj\Debug\Tester.csprojResolveAssemblyReference.cache
+D:\Project\NatLib\Tester\obj\Debug\Tester.exe
+D:\Project\NatLib\Tester\obj\Debug\Tester.pdb

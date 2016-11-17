@@ -1,0 +1,8 @@
+D:\Project\NatLib\NatLib.DB\bin\Debug\NatLib.DB.dll
+D:\Project\NatLib\NatLib.DB\bin\Debug\NatLib.DB.pdb
+D:\Project\NatLib\NatLib.DB\bin\Debug\MySql.Data.dll
+D:\Project\NatLib\NatLib.DB\bin\Debug\NatLib.dll
+D:\Project\NatLib\NatLib.DB\bin\Debug\NatLib.pdb
+D:\Project\NatLib\NatLib.DB\obj\Debug\NatLib.DB.csprojResolveAssemblyReference.cache
+D:\Project\NatLib\NatLib.DB\obj\Debug\NatLib.DB.dll
+D:\Project\NatLib\NatLib.DB\obj\Debug\NatLib.DB.pdb
