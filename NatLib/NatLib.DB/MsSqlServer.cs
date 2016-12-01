@@ -13,22 +13,28 @@ namespace NatLib.DB
     {
         public SqlConnectionStringBuilder ConString { get; set; }
 
-        public virtual SqlConnection Connection()
+        #region Constructor
+        public virtual SqlConnection Connection(SqlConnectionStringBuilder conString = null)
         {
             var con = new SqlConnection();
             Func<string, string> config = ConfigurationManager.AppSettings.Get;
-            ConString = new SqlConnectionStringBuilder
-            {
-                DataSource = config("Server"),
-                UserID = config("UserID"),
-                Password = config("Password"),
-                InitialCatalog = config("Database")
-            };
+            if (conString == null)
+                ConString = new SqlConnectionStringBuilder
+                {
+                    DataSource = config("Server"),
+                    UserID = config("UserID"),
+                    Password = config("Password"),
+                    InitialCatalog = config("Database")
+                };
+            else
+                ConString = conString;
+
             con.ConnectionString = ConString.ConnectionString;
             con.Open();
             return con;
         }
 
+        #endregion
         public DataSet SqlExecCommand(string command)
         {
             var dataSet = new DataSet();

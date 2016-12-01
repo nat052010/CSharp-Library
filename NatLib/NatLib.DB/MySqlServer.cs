@@ -13,21 +13,29 @@ namespace NatLib.DB
     {
         public MySqlConnectionStringBuilder ConString { get; set; }
 
-        public virtual MySqlConnection Connection()
+        #region Constructor
+        public virtual MySqlConnection Connection(MySqlConnectionStringBuilder conString = null)
         {
             var con = new MySqlConnection();
             Func<string, string> config = ConfigurationManager.AppSettings.Get;
-            ConString = new MySqlConnectionStringBuilder()
-            {
-                Server = config("Server"),
-                UserID = config("UserID"),
-                Password = config("Password"),
-                Database = config("Database"),
-                Port = Convert.ToUInt32(config("Port"))
-            };
+            if (conString == null)
+                ConString = new MySqlConnectionStringBuilder()
+                {
+                    Server = config("Server"),
+                    UserID = config("UserID"),
+                    Password = config("Password"),
+                    Database = config("Database"),
+                    Port = Convert.ToUInt32(config("Port"))
+                };
+            else
+                ConString = conString;
+
+            con.ConnectionString = ConString.ConnectionString;
+            con.Open();
             return con;
         }
 
+        #endregion
         public DataSet SqlExecCommand(string command)
         {
             var dataSet = new DataSet();
