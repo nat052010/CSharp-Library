@@ -22,3 +22,5 @@ D:\Project\CSharp-Library\NatLib\Tester\bin\Debug\NatLib.pdb
 D:\Project\CSharp-Library\NatLib\Tester\obj\Debug\Tester.csprojResolveAssemblyReference.cache
 D:\Project\CSharp-Library\NatLib\Tester\bin\Debug\System.Data.SQLite.dll
 D:\Project\CSharp-Library\NatLib\Tester\bin\Debug\System.Data.SQLite.xml
+D:\Project\CSharp-Library\NatLib\Tester\bin\Debug\NatLib.Debug.dll
+D:\Project\CSharp-Library\NatLib\Tester\bin\Debug\NatLib.Debug.pdb

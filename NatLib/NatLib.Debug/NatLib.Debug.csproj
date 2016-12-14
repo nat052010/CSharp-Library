@@ -4,17 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FEF81420-8DF8-4EA1-96D3-AA4D1445D68A}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{1DD64294-6624-463A-97FE-2AA9EDDD09EF}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Tester</RootNamespace>
-    <AssemblyName>Tester</AssemblyName>
+    <RootNamespace>NatLib.Debug</RootNamespace>
+    <AssemblyName>NatLib.Debug</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -43,25 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Log.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\NatLib.DB\NatLib.DB.csproj">
-      <Project>{71cf6ce7-b14b-4758-9999-aab5b6fc4209}</Project>
-      <Name>NatLib.DB</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\NatLib.Debug\NatLib.Debug.csproj">
-      <Project>{1dd64294-6624-463a-97fe-2aa9eddd09ef}</Project>
-      <Name>NatLib.Debug</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\NatLib\NatLib.csproj">
-      <Project>{ffb505f3-bd82-443b-a260-68eeef271a43}</Project>
-      <Name>NatLib</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
