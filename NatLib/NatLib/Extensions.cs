@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 
 namespace NatLib
 {
@@ -26,6 +28,18 @@ namespace NatLib
         public static string SqlParamName(this string param)
         {
             return param.IndexOf('@') != -1 ? param : "@" + param;
+        }
+
+        public static void Log(this string error)
+        {
+            var location = Path.Combine(Directory.GetCurrentDirectory(), "Error");
+            var fileName = "Err_" + DateTime.Today.ToShortDateString().Replace("/", "-") + ".txt";
+            var path = Path.Combine(location, fileName);
+
+            using (var file = new StreamWriter(path, true))
+            {
+                file.WriteLine(DateTime.Now.ToShortTimeString() + ", " + error);
+            }
         }
     }
 }

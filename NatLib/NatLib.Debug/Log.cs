@@ -23,7 +23,7 @@ namespace NatLib.Debug
         #region Constructor
         public Log()
         {
-            Location = Path.Combine(Directory.GetCurrentDirectory(), "Error") ;
+            Location = Path.Combine(Directory.GetCurrentDirectory(), "Error");
             FileName = "Err_" + DateTime.Today.ToShortDateString().Replace("/", "-");
         }
 

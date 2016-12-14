@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using NatLib;
 using NatLib.DB;
 using NatLib.Debug;
 
@@ -9,9 +10,7 @@ namespace Tester
     {
         private static void Main(string[] args)
         {
-            var log = new Log();
-            log.Write("Error1");
-            log.Write("Error2");
+            "Error Sample".Log();
             Console.WriteLine("Writing Error");
             Console.ReadLine();
             /*
