@@ -9,27 +9,37 @@ using System.Data.SQLite;
 
 namespace NatLib.DB
 {
-    public class SqLite
+    public class SqLite : IDisposable
     {
+        private bool _disposed = false;
         public SQLiteConnectionStringBuilder ConString { get; set; }
 
         public SQLiteConnection Connection(SQLiteConnectionStringBuilder conString = null)
         {
-            var con = new SQLiteConnection();
-            Func<string, string> config = ConfigurationManager.AppSettings.Get;
+            try
+            {
+                var con = new SQLiteConnection();
+                Func<string, string> config = ConfigurationManager.AppSettings.Get;
 
-            if (conString == null)
-                ConString = new SQLiteConnectionStringBuilder
-                {
-                    DataSource = config("SQLiteDataSource"),
-                    Version = Convert.ToInt32(config("SQLiteVersion"))
-                };
-            else
-                ConString = conString;
+                if (conString == null)
+                    ConString = new SQLiteConnectionStringBuilder
+                    {
+                        DataSource = config("SQLiteDataSource"),
+                        Version = Convert.ToInt32(config("SQLiteVersion"))
+                    };
+                else
+                    ConString = conString;
 
-            con.ConnectionString = ConString.ConnectionString;
-            con.Open();
-            return con;
+                con.ConnectionString = ConString.ConnectionString;
+                con.Open();
+                return con;
+
+            }
+            catch (Exception ex)
+            {
+                ex.Message.Log();
+                throw;
+            }
         }
 
         public DataSet SqlExecCommand(string command)
@@ -55,7 +65,7 @@ namespace NatLib.DB
                 com.CommandType = CommandType.StoredProcedure;
                 com.CommandText = command;
                 foreach (var item in param)
-                    com.Parameters.Add(item.Key.SqlParamName(), (DbType) item.Value);
+                    com.Parameters.Add(item.Key.SqlParamName(), (DbType)item.Value);
 
                 var adapter = new SQLiteDataAdapter() { SelectCommand = com };
                 adapter.Fill(dataSet);
@@ -88,5 +98,25 @@ namespace NatLib.DB
             return result;
         }
 
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!_disposed) return;
+            if (disposing)
+            {
+
+            }
+            _disposed = true;
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        ~SqLite()
+        {
+            Dispose(false);
+        }
     }
 }

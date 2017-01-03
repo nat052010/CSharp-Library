@@ -11,27 +11,39 @@ namespace NatLib.DB
     /// </summary>
     public class MsSqlServer : IDisposable
     {
+        private bool _disposed = false;
+
         public SqlConnectionStringBuilder ConString { get; set; }
 
         #region Constructor
         public virtual SqlConnection Connection(SqlConnectionStringBuilder conString = null)
         {
-            var con = new SqlConnection();
-            Func<string, string> config = ConfigurationManager.AppSettings.Get;
-            if (conString == null)
-                ConString = new SqlConnectionStringBuilder
-                {
-                    DataSource = config("Server"),
-                    UserID = config("UserID"),
-                    Password = config("Password"),
-                    InitialCatalog = config("Database")
-                };
-            else
-                ConString = conString;
 
-            con.ConnectionString = ConString.ConnectionString;
-            con.Open();
-            return con;
+            try
+            {
+                var con = new SqlConnection();
+                Func<string, string> config = ConfigurationManager.AppSettings.Get;
+                if (conString == null)
+                    ConString = new SqlConnectionStringBuilder
+                    {
+                        DataSource = config("Server"),
+                        UserID = config("UserID"),
+                        Password = config("Password"),
+                        InitialCatalog = config("Database")
+                    };
+                else
+                    ConString = conString;
+
+                con.ConnectionString = ConString.ConnectionString;
+                con.Open();
+                return con;
+
+            }
+            catch (Exception ex)
+            {
+                ex.Message.Log();
+                throw;
+            }
         }
 
         #endregion
@@ -91,14 +103,25 @@ namespace NatLib.DB
             return result;
         }
 
-        public virtual void Dispose(bool disposing)
+        protected virtual void Dispose(bool disposing)
         {
+            if (!_disposed) return;
+            if (disposing)
+            {
+
+            }
+            _disposed = true;
         }
 
         public void Dispose()
         {
-            GC.SuppressFinalize(this);
             Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        ~MsSqlServer()
+        {
+            Dispose(false);
         }
     }
 }

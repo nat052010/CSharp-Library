@@ -9,30 +9,40 @@ namespace NatLib.DB
     /// <summary>
     /// NAT20161117 object for manipulating mysql server database
     /// </summary>
-    public class MySqlServer
+    public class MySqlServer : IDisposable
     {
+        private bool _disposed = false;
         public MySqlConnectionStringBuilder ConString { get; set; }
 
         #region Constructor
         public virtual MySqlConnection Connection(MySqlConnectionStringBuilder conString = null)
         {
-            var con = new MySqlConnection();
-            Func<string, string> config = ConfigurationManager.AppSettings.Get;
-            if (conString == null)
-                ConString = new MySqlConnectionStringBuilder()
-                {
-                    Server = config("Server"),
-                    UserID = config("UserID"),
-                    Password = config("Password"),
-                    Database = config("Database"),
-                    Port = Convert.ToUInt32(config("Port"))
-                };
-            else
-                ConString = conString;
+            try
+            {
+                var con = new MySqlConnection();
+                Func<string, string> config = ConfigurationManager.AppSettings.Get;
+                if (conString == null)
+                    ConString = new MySqlConnectionStringBuilder()
+                    {
+                        Server = config("Server"),
+                        UserID = config("UserID"),
+                        Password = config("Password"),
+                        Database = config("Database"),
+                        Port = Convert.ToUInt32(config("Port"))
+                    };
+                else
+                    ConString = conString;
 
-            con.ConnectionString = ConString.ConnectionString;
-            con.Open();
-            return con;
+                con.ConnectionString = ConString.ConnectionString;
+                con.Open();
+                return con;
+
+            }
+            catch (Exception ex)
+            {
+                ex.Message.Log();
+                throw;
+            }
         }
 
         #endregion
@@ -90,6 +100,28 @@ namespace NatLib.DB
                 result = comm.ExecuteScalar();
             }
             return result;
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (_disposed) return;
+
+            if (disposing)
+            {
+
+            }
+            _disposed = true;
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        ~MySqlServer()
+        {
+
         }
     }
 }

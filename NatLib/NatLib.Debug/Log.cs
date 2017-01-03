@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Security.AccessControl;
+using System.Web;
+using System.Web.Hosting;
 
 namespace NatLib.Debug
 {
@@ -23,7 +25,11 @@ namespace NatLib.Debug
         #region Constructor
         public Log()
         {
-            Location = Path.Combine(Directory.GetCurrentDirectory(), "Error");
+            if (HostingEnvironment.IsHosted)
+                Location = HttpContext.Current.Server.MapPath("~/Error");
+            else
+                Location = Path.Combine(Directory.GetCurrentDirectory(), "Error");
+
             FileName = "Err_" + DateTime.Today.ToShortDateString().Replace("/", "-");
         }
 
@@ -48,16 +54,14 @@ namespace NatLib.Debug
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!_disposed)
+            if (_disposed) return;
+            if (disposing)
             {
-                if (disposing)
-                {
                     
-                }
-                // Release unmanaged resources.
-                // Set large fields to null.                
-                _disposed = true;
             }
+            // Release unmanaged resources.
+            // Set large fields to null.                
+            _disposed = true;
         }
 
         public void Dispose() // Implement IDisposable

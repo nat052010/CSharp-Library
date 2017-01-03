@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Net;
+using System.Web;
+using System.Web.Hosting;
+
 
 namespace NatLib
 {
@@ -32,7 +36,16 @@ namespace NatLib
 
         public static void Log(this string error)
         {
-            var location = Path.Combine(Directory.GetCurrentDirectory(), "Error");
+            var location = "";
+
+            if (HostingEnvironment.IsHosted)
+                location = HttpContext.Current.Server.MapPath("~/Error");
+            else
+                location = Path.Combine(Directory.GetCurrentDirectory(), "Error");
+
+            if (!Directory.Exists(location))
+                Directory.CreateDirectory(location);
+
             var fileName = "Err_" + DateTime.Today.ToShortDateString().Replace("/", "-") + ".txt";
             var path = Path.Combine(location, fileName);
 
