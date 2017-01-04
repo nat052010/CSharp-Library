@@ -54,5 +54,12 @@ namespace NatLib
                 file.WriteLine(DateTime.Now.ToShortTimeString() + ", " + error);
             }
         }
+
+        public static string ToSqlCharacter(this string value)
+        {
+            var result = value?.Replace("'", "''");
+
+            return result;
+        }
     }
 }

@@ -10,8 +10,8 @@ namespace Tester
     {
         private static void Main(string[] args)
         {
-            "Error Sample".Log();
-            Console.WriteLine("Writing Error");
+            //"Error Sample".Log();
+            Console.WriteLine("Writing Error".ToSqlCharacter());
             Console.ReadLine();
             /*
                         var sql = new MsSqlServer();
