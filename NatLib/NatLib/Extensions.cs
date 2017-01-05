@@ -36,12 +36,7 @@ namespace NatLib
 
         public static void Log(this string error)
         {
-            var location = "";
-
-            if (HostingEnvironment.IsHosted)
-                location = HttpContext.Current.Server.MapPath("~/Error");
-            else
-                location = Path.Combine(Directory.GetCurrentDirectory(), "Error");
+            var location = HostingEnvironment.IsHosted ? HttpContext.Current.Server.MapPath("~/Error") : Path.Combine(Directory.GetCurrentDirectory(), "Error");
 
             if (!Directory.Exists(location))
                 Directory.CreateDirectory(location);
