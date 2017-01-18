@@ -50,11 +50,20 @@ namespace NatLib
             }
         }
 
-        public static string ToSqlCharacter(this string value)
+        public static string ToSqlCharacter(this string value)  
         {
             var result = value?.Replace("'", "''");
 
             return result;
         }
+
+        public static string ToCleanSql(this string sql)
+        {
+            if (sql == null) return null;
+
+            var length = sql.IndexOf(';') == -1 ? sql.Length : sql.IndexOf(';');
+            return sql.Substring(0, length);
+        }
+
     }
 }
