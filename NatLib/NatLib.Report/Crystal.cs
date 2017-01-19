@@ -14,9 +14,11 @@ namespace NatLib.Report
     /// </summary>
     public class Crystal : IDisposable
     {
+        //Fields
+        private bool _disposed = false;
+
         //Properties
         public string Data { get; set; }
-
         public string FileName { get; set; }
         public Dictionary<string, object> Parameters { get; set; }
         public DbConString ConString { get; set; }
@@ -42,8 +44,16 @@ namespace NatLib.Report
         //Methods
         public void SetDatabase(DbConString db)
         {
-            Document.SetDatabaseLogon(db.UserId, db.Password, db.Database, db.DataSource);
-            DbConnectionReady = true;
+            try
+            {
+                Document.SetDatabaseLogon(db.UserId, db.Password, db.Database, db.DataSource);
+                DbConnectionReady = true;
+            }
+            catch (Exception ex)
+            {
+                ex.Message.Log();
+                throw;
+            }
         }
 
         private void PreLoad()
@@ -67,11 +77,20 @@ namespace NatLib.Report
         {
             using (var ms = new MemoryStream())
             {
-                Document.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
-                ms.Position = 0;
-                var buffer = ms.ToArray();
-                ms.Close();
-                Data = $"data:application/pdf;base64,{Convert.ToBase64String(buffer)}";
+                try
+                {
+                    Document.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
+                    ms.Position = 0;
+                    var buffer = ms.ToArray();
+                    ms.Close();
+                    Data = $"data:application/pdf;base64,{Convert.ToBase64String(buffer)}";
+                }
+                catch (Exception ex)
+                {
+                    ex.Message.Log();
+                    ms.Close();
+                    throw;
+                }
             }
         }
 
@@ -96,13 +115,27 @@ namespace NatLib.Report
             Parameters.Add(key, value);
         }
 
+        public void Dispose(bool disposing)
+        {
+            if (!disposing) return;
+
+            if (!_disposed)
+            {
+                if (DeleteTempReport && File.Exists(ReportPath))
+                    File.Delete(ReportPath);
+            }
+            _disposed = true;
+        }
+
         public void Dispose()
         {
-            if (DeleteTempReport && File.Exists(ReportPath))
-                File.Delete(ReportPath);
-
-            GC.Collect();
+            Dispose(true);
             GC.SuppressFinalize(this);
+        }
+
+        ~Crystal()
+        {
+            Dispose(false);            
         }
     }
 }
