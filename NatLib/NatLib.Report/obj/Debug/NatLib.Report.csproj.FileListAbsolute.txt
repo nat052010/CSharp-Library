@@ -42,3 +42,5 @@ D:\Project\CSharp-Library\NatLib\NatLib.Report\bin\Debug\NatLib.pdb
 D:\Project\CSharp-Library\NatLib\NatLib.Report\obj\Debug\NatLib.Report.csprojResolveAssemblyReference.cache
 D:\Project\CSharp-Library\NatLib\NatLib.Report\obj\Debug\NatLib.Report.dll
 D:\Project\CSharp-Library\NatLib\NatLib.Report\obj\Debug\NatLib.Report.pdb
+D:\Project\CSharp-Library\NatLib\NatLib.Report\bin\Debug\NatLib.Report.dll.CodeAnalysisLog.xml
+D:\Project\CSharp-Library\NatLib\NatLib.Report\bin\Debug\NatLib.Report.dll.lastcodeanalysissucceeded

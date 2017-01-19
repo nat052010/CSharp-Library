@@ -23,3 +23,5 @@ D:\Project\CSharp-Library\NatLib\NatLib.DB\bin\Debug\System.Data.SQLite.xml
 D:\Project\CSharp-Library\NatLib\NatLib.DB\obj\Debug\NatLib.DB.csprojResolveAssemblyReference.cache
 D:\Project\CSharp-Library\NatLib\NatLib.DB\obj\Debug\NatLib.DB.dll
 D:\Project\CSharp-Library\NatLib\NatLib.DB\obj\Debug\NatLib.DB.pdb
+D:\Project\CSharp-Library\NatLib\NatLib.DB\bin\Debug\NatLib.DB.dll.CodeAnalysisLog.xml
+D:\Project\CSharp-Library\NatLib\NatLib.DB\bin\Debug\NatLib.DB.dll.lastcodeanalysissucceeded

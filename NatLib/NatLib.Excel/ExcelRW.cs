@@ -30,9 +30,9 @@ namespace NatLib.Excel
                                                $";Extended Properties=\"Excel 12.0 Xml;HDR={(hdr ? "YES" : "NO")}\"");
                 Document.Open();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw;
+                throw ;
             }
         }
 
@@ -48,7 +48,7 @@ namespace NatLib.Excel
                     com.ExecuteNonQuery();
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -96,7 +96,7 @@ namespace NatLib.Excel
                     startRow++;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -106,17 +106,23 @@ namespace NatLib.Excel
         {
         }
 
-        public void Dispose()
-        {
-            GC.SuppressFinalize((object)this);
-            Dispose(true);
-        }
-
-        public virtual void Dispose(bool disposing)
+        protected virtual void Dispose(bool disposing)
         {
             if (!disposing) return;
             if (DeleteFileOnDispose)
                 File.Delete(FileName);
         }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        ~ExcelRW()
+        {
+            Dispose(false);
+        }
+
     }
 }

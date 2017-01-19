@@ -12,3 +12,5 @@ D:\Project\CSharp-Library\NatLib\NatLib.Excel\bin\Debug\NatLib.pdb
 D:\Project\CSharp-Library\NatLib\NatLib.Excel\obj\Debug\NatLib.Excel.csprojResolveAssemblyReference.cache
 D:\Project\CSharp-Library\NatLib\NatLib.Excel\obj\Debug\NatLib.Excel.dll
 D:\Project\CSharp-Library\NatLib\NatLib.Excel\obj\Debug\NatLib.Excel.pdb
+D:\Project\CSharp-Library\NatLib\NatLib.Excel\bin\Debug\NatLib.Excel.dll.CodeAnalysisLog.xml
+D:\Project\CSharp-Library\NatLib\NatLib.Excel\bin\Debug\NatLib.Excel.dll.lastcodeanalysissucceeded

@@ -70,7 +70,7 @@ namespace NatLib.DB
                 com.CommandType = CommandType.StoredProcedure;
                 com.CommandText = command;
                 foreach (var item in param)
-                    com.Parameters.Add(item.Key.SqlParamName(), item.Value);
+                    com.Parameters.AddWithValue(item.Key.SqlParamName(), item.Value);
 
                 var adapter = new SqlDataAdapter { SelectCommand = com };
                 adapter.Fill(dataSet);

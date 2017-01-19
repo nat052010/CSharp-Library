@@ -39,6 +39,8 @@ D:\Project\CSharp-Library\NatLib\NatLib\bin\Debug\CrystalDecisions.ReportAppServ
 D:\Project\CSharp-Library\NatLib\NatLib\bin\Debug\CrystalDecisions.ReportAppServer.ObjectFactory.dll
 D:\Project\CSharp-Library\NatLib\NatLib\bin\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
 D:\Project\CSharp-Library\NatLib\NatLib\bin\Debug\stdole.dll
-D:\Project\CSharp-Library\NatLib\NatLib\obj\Debug\NatLib.csprojResolveAssemblyReference.cache
 D:\Project\CSharp-Library\NatLib\NatLib\obj\Debug\NatLib.dll
 D:\Project\CSharp-Library\NatLib\NatLib\obj\Debug\NatLib.pdb
+D:\Project\CSharp-Library\NatLib\NatLib\bin\Debug\NatLib.dll.CodeAnalysisLog.xml
+D:\Project\CSharp-Library\NatLib\NatLib\bin\Debug\NatLib.dll.lastcodeanalysissucceeded
+D:\Project\CSharp-Library\NatLib\NatLib\obj\Debug\NatLib.csprojResolveAssemblyReference.cache

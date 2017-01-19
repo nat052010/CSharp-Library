@@ -81,14 +81,12 @@ namespace NatLib.Report
                 {
                     Document.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
                     ms.Position = 0;
-                    var buffer = ms.ToArray();
-                    ms.Close();
+                    var buffer = ms.ToArray();                    
                     Data = $"data:application/pdf;base64,{Convert.ToBase64String(buffer)}";
                 }
                 catch (Exception ex)
                 {
                     ex.Message.Log();
-                    ms.Close();
                     throw;
                 }
             }
@@ -115,7 +113,7 @@ namespace NatLib.Report
             Parameters.Add(key, value);
         }
 
-        public void Dispose(bool disposing)
+        protected virtual void Dispose(bool disposing)
         {
             if (!disposing) return;
 

@@ -38,7 +38,7 @@ namespace NatLib
             ex.Message.Log();
         }
 
-        public void Dispose(bool disposing)
+        protected virtual void Dispose(bool disposing)
         {
             if (!disposing) return;
 
