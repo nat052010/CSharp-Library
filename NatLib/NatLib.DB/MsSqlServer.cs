@@ -11,7 +11,7 @@ namespace NatLib.DB
     /// </summary>
     public class MsSqlServer : IDisposable
     {
-        private bool _disposed = false;
+        private bool _disposed;
 
         public SqlConnectionStringBuilder ConString { get; set; }
 
