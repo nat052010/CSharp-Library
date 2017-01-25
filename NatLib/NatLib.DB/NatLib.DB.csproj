@@ -65,6 +65,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extension.cs" />
     <Compile Include="MsSqlServer.cs" />
     <Compile Include="MySqlServer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
