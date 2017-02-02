@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 
@@ -48,6 +49,21 @@ namespace NatLib.Web
                 return cookie[cookieName].Value;
 
             return null;
+        }
+
+        public static bool PageExists(this string address)
+        {
+            try
+            {
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(address);
+                request.Method = WebRequestMethods.Http.Head;
+                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                return response.StatusCode == HttpStatusCode.OK;
+            }
+            catch
+            {   
+                return false;
+            }
         }
     }
 }

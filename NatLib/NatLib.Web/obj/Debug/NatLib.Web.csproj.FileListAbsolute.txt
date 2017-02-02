@@ -8,6 +8,4 @@ D:\Project\CSharp-Library\NatLib\NatLib.Web\bin\Debug\System.Net.Http.xml
 D:\Project\CSharp-Library\NatLib\NatLib.Web\obj\Debug\NatLib.Web.dll
 D:\Project\CSharp-Library\NatLib\NatLib.Web\obj\Debug\NatLib.Web.pdb
 D:\Project\CSharp-Library\NatLib\NatLib.Web\bin\Debug\System.Net.Http.Formatting.dll
-D:\Project\CSharp-Library\NatLib\NatLib.Web\bin\Debug\NatLib.Web.dll.CodeAnalysisLog.xml
-D:\Project\CSharp-Library\NatLib\NatLib.Web\bin\Debug\NatLib.Web.dll.lastcodeanalysissucceeded
 D:\Project\CSharp-Library\NatLib\NatLib.Web\obj\Debug\NatLib.Web.csprojResolveAssemblyReference.cache
